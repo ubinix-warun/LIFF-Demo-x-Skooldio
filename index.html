@@ -74,6 +74,7 @@
     }
 
     async function getUserProfile() { //!!!
+      console.log("Hello World! 2")
         const profile = await liff.getProfile()
         console.log("getUserProfile()")
         document.getElementById("pictureUrl").src = profile.pictureUrl
@@ -116,7 +117,9 @@
     //   alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1654575632-L8N71vbQ" })
       getEnvironment()
+      console.log("Hello World! 3")
       getUserProfile()
+      console.log("Hello World! 4")
       // getContext()
       // getFriendship()
       // createUniversalLink()
