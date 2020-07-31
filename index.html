@@ -71,7 +71,7 @@
     function getContext() {
     }
 
-    async function getUserProfile() {
+    async function getUserProfile() { //!!!
         const profile = await liff.getProfile()
         console.log(profile)
         document.getElementById("pictureUrl").src = profile.pictureUrl
