@@ -71,28 +71,29 @@
     function getContext() {
     }
 
-//     async function getUserProfile() { //!!!
-//         const profile = await liff.getProfile()
-//         console.log(profile)
-//         document.getElementById("pictureUrl").src = profile.pictureUrl
-//         document.getElementById("userId").append(profile.userId)
-//         document.getElementById("statusMessage").append(profile.statusMessage)
-//         document.getElementById("displayName").append(profile.displayName)
-//     }
-    
-    function getUserProfile() { //!!!
-          liff.getProfile()
-            .then(profile => {
-              document.getElementById("pictureUrl").src = profile.pictureUrl
-              document.getElementById("userId").append(profile.userId)
-              document.getElementById("statusMessage").append(profile.statusMessage)
-              document.getElementById("displayName").append(profile.displayName)
-
-            })
-            .catch((err) => {
-              console.log('error', err);
-            });
+    async function getUserProfile() { //!!!
+        const profile = await liff.getProfile()
+        console.log("getUserProfile()")
+        document.getElementById("pictureUrl").src = profile.pictureUrl
+        document.getElementById("userId").append(profile.userId)
+        document.getElementById("statusMessage").append(profile.statusMessage)
+        document.getElementById("displayName").append(profile.displayName)
+        document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
+    
+//     function getUserProfile() { //!!!
+//           liff.getProfile()
+//             .then(profile => {
+//               document.getElementById("pictureUrl").src = profile.pictureUrl
+//               document.getElementById("userId").append(profile.userId)
+//               document.getElementById("statusMessage").append(profile.statusMessage)
+//               document.getElementById("displayName").append(profile.displayName)
+
+//             })
+//             .catch((err) => {
+//               console.log('error', err);
+//             });
+//     }
     
     function getEnvironment() {
         document.getElementById("os").append(liff.getOS())
