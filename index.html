@@ -42,8 +42,8 @@
     console.log("Hello World!")
   </script>
 
-<!--   <script src="https://static.line-scdn.net/liff/edge/versions/2.2.0/sdk.js"></script> -->
-  <script src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script>
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.2.0/sdk.js"></script>
+<!--   <script src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script> -->
   
   <script>
     function createUniversalLink() {
@@ -74,7 +74,6 @@
     }
 
     async function getUserProfile() { //!!!
-      console.log("Hello World! 2")
         const profile = await liff.getProfile()
         console.log("getUserProfile()")
         document.getElementById("pictureUrl").src = profile.pictureUrl
@@ -83,20 +82,6 @@
         document.getElementById("displayName").append(profile.displayName)
         document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
-    
-//     function getUserProfile() { //!!!
-//           liff.getProfile()
-//             .then(profile => {
-//               document.getElementById("pictureUrl").src = profile.pictureUrl
-//               document.getElementById("userId").append(profile.userId)
-//               document.getElementById("statusMessage").append(profile.statusMessage)
-//               document.getElementById("displayName").append(profile.displayName)
-
-//             })
-//             .catch((err) => {
-//               console.log('error', err);
-//             });
-//     }
     
     function getEnvironment() {
         document.getElementById("os").append(liff.getOS())
@@ -114,15 +99,19 @@
     }
 
     async function main() {
-    //   alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "1654575632-L8N71vbQ" })
-      getEnvironment()
-      console.log("Hello World! 3")
-      getUserProfile()
-      console.log("Hello World! 4")
-      // getContext()
-      // getFriendship()
-      // createUniversalLink()
+      liff.ready.then(() => {
+        document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+        if (liff.isLoggedIn()) {
+          getEnvironment()
+          getUserProfile()
+//           getContext()
+//           getFriendship()
+//           createUniversalLink()
+        } else {
+          liff.login()
+        }
+      })
+      await liff.init({ liffId: "YOUR-LIFF-ID" })
     }
     main()
   </script>
