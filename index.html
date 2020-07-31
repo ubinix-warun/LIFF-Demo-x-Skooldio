@@ -37,10 +37,10 @@
   <button id="btnClose" onclick="closed()">Close</button>
 
   <script src="js/vconsole.min.js"></script>
-  <script>
-    var vConsole = new VConsole()
-    console.log("Hello World!")
-  </script>
+//   <script>
+//     var vConsole = new VConsole()
+//     console.log("Hello World!")
+  //</script>
 
   <script src="https://static.line-scdn.net/liff/edge/versions/2.2.0/sdk.js"></script>
 <!--   <script src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script> -->
@@ -55,6 +55,8 @@ document.write('<script defer src="app.js?cache=' + new Date().getTime() + '"><\
 </script>
   
   <script>
+    
+    var vConsole = new VConsole() // ...
     function createUniversalLink() {
     }
 
